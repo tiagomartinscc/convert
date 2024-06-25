@@ -1,0 +1,8 @@
+# Projeto conversor de moedas
+Utilizando apenas javascript puro foi desenvolvida esta aplicação para calcular/converter moedas como dolar americano, euro e libra para reais.
+
+Demo: <https://tiagomartinscc.github.io/conversor-moedas>
+
+<img src="img/project.png">
+
+<img src="https://app.rocketseat.com.br/_next/image?url=https%3A%2F%2Fxesque.rocketseat.dev%2Fplatform%2F1712670610276.svg&w=1920&q=100">
