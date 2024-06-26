@@ -1,8 +1,3 @@
-//cotação de moedas do dia
-const USD = 4.87
-const EUR = 5.32
-const GBP = 6.08
-
 // obtendo elementos do form
 const form = document.querySelector('form')
 const amount = document.getElementById('amount')
@@ -18,21 +13,27 @@ amount.addEventListener('input', (event) => {
 })
 
 // capturando o evento de submit do form
-form.onsubmit = (event) => {
+form.onsubmit = async (event) => {
   event.preventDefault()
-
+  let price = await getPrice(currency.value)
   switch (currency.value) {
     case "USD":
-      convertCurrency(amount.value, USD, 'US$')
+      convertCurrency(amount.value, price, 'US$')
       break;
     case "EUR":
-      convertCurrency(amount.value, EUR, "€")
+      convertCurrency(amount.value, price, "€")
       break;
     case "GBP":
-      convertCurrency(amount.value, GBP, "£")
-      break;    
-
+      convertCurrency(amount.value, price, "£")
+      break;
   }
+}
+
+async function getPrice(currency) {
+  const url = `https://economia.awesomeapi.com.br/json/last/${currency}`
+  const response = await fetch(url)
+  const data = await response.json()
+  return data[`${currency}BRL`].bid
 }
 
 // função de conversão de moeda
